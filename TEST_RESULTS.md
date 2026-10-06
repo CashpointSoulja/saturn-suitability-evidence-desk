@@ -172,4 +172,48 @@ G24 OK   expected [missing_section] predicted [missing_section]  Charges section
 The three `MISS` rows are the keyword scan flagging “I got a bit confused about which car park to use” in base case B4 (see [EVAL_METHODOLOGY.md](EVAL_METHODOLOGY.md)). Per disclosure line, the one vulnerability miss is G15. These are results on synthetic fixtures written by the same author as the checker.
 
 ## Deploy checks
-DEPLOY_PLACEHOLDER
+Run 2026-10-06 against the live site after commit `23d77ea` deployed through `.github/workflows/pages.yml`.
+
+**HTTP status (curl)**
+
+| URL | Status |
+| --- | --- |
+| `https://cashpointsoulja.github.io/saturn-suitability-evidence-desk/` | 200 |
+| `.../#/` | 200 |
+| `.../#/case/SR-0912` | 200 |
+| `.../#/eval` | 200 |
+| `.../#/metrics` | 200 |
+| `.../#/rules` | 200 |
+| `.../#/no` | 200 |
+| `.../assets/saturn-logo.png` | 200 |
+
+Hash routes are resolved in the browser, so a hard refresh on any route requests the same `index.html`.
+
+**Hard refresh and layout (Playwright, Chromium)**
+
+Each route was loaded with a full page reload at 1366×900 (desktop) and 390×844 (mobile), then `document.documentElement.scrollWidth - innerWidth` was measured.
+
+| Route | Desktop overflow-x | Mobile overflow-x |
+| --- | --- | --- |
+| Inbox `#/` | 0 | 0 |
+| Review desk `#/case/SR-0916` | 0 | 0 |
+| Review desk, vulnerability tab `#/case/SR-0914` | 0 | 0 |
+| Eval lab `#/eval` | 0 | 0 |
+| Metrics and bets `#/metrics` | 0 | 0 |
+| Rules and sources `#/rules` | 0 | 0 |
+| What I said no to `#/no` | 0 | 0 |
+
+Screenshots of every screen at both widths are in `docs/screenshots/` and were inspected by eye for overlap, clipping, unreadable text and the logo.
+
+Issues found and fixed during visual QA:
+- Mobile inbox table clipped the readiness column; optional columns are now hidden under 560px and the case reference moves under the client name.
+- Mobile menu icon lines rendered too thin to see; now 1.5px black lines at a fixed width.
+- Headline line breaks hidden on mobile joined two words; a space now precedes each break.
+
+**Live edit check**
+
+On `#/case/SR-0916`, the charge sentence "1.5% of £30,000, which is £540" fails `ARITH-001` (1.5% of £30,000 = £450). On the summary sentence, changing £20,000 to £25,000 fails the ISA allowance and fact-find figure checks.
+
+**Demo video**
+
+`demo/suitability-evidence-desk-demo.mp4`: 1080×1920, H.264 + AAC, 84.4 seconds, recorded from the live site.
