@@ -50,7 +50,7 @@ export function EvalLab() {
     <section className="page">
       <div className="page-head">
         <Eyebrow>Eval lab</Eyebrow>
-        <h1 className="display">How often does the checker<br />catch a seeded defect?</h1>
+        <h1 className="display">How often does the checker <br className="br-wide" />catch a seeded defect?</h1>
         <p className="lede">A golden set of {r.cases} synthetic cases built from six base reports, {r.defectiveCases} with seeded defects and {r.cleanCases} clean. The checker runs live in your browser. This measures the checker on synthetic fixtures, not real advice files or Saturn’s product.</p>
         <div className="row"><button className="btn btn-primary" onClick={rerun}>Run checker on {r.cases} cases</button><span className="small muted">{ms === null ? 'Ran once on page load.' : `Run ${runs} finished in ${ms.toFixed(1)} ms.`}</span></div>
       </div>

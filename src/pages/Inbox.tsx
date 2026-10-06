@@ -26,11 +26,11 @@ function Row({ ref_ }: { ref_: string }) {
   const open = () => { window.location.hash = `#/case/${ref_}`; };
   return (
     <tr className="rowlink" onClick={open} onKeyDown={(e) => e.key === 'Enter' && open()} tabIndex={0}>
-      <td className="mono" style={{ whiteSpace: "nowrap" }}>{item.ref}</td>
-      <td><a href={`#/case/${ref_}`} onClick={(e) => e.stopPropagation()}>{c.client}</a><div className="small muted">{item.mix}</div></td>
-      <td>{c.adviceLabel}</td>
-      <td className="small">{formatDate(c.meetingDate)}</td>
-      <td className="small">{c.adviser}<div className="muted">{c.paraplanner}</div></td>
+      <td className="mono c-opt" style={{ whiteSpace: "nowrap" }}>{item.ref}</td>
+      <td><a href={`#/case/${ref_}`} onClick={(e) => e.stopPropagation()}>{c.client}</a><div className="small muted">{item.mix}</div><div className="mono small muted c-inline">{item.ref}</div></td>
+      <td className="c-opt">{c.adviceLabel}</td>
+      <td className="small c-opt">{formatDate(c.meetingDate)}</td>
+      <td className="small c-opt">{c.adviser}<div className="muted">{c.paraplanner}</div></td>
       <td>
         <div className="readiness">
           {pill}
@@ -47,7 +47,7 @@ export function Inbox() {
     <section className="page">
       <div className="page-head">
         <Eyebrow>Suitability Evidence Desk</Eyebrow>
-        <h1 className="display">Every sentence, traced<br />to its evidence.</h1>
+        <h1 className="display">Every sentence, traced <br className="br-wide" />to its evidence.</h1>
         <p className="lede">Review a drafted suitability report against the meeting transcript and fact-find. Figures, dates and arithmetic are checked by code. Reasons, objectives and vulnerability are shown with their evidence and left to adviser judgement.</p>
       </div>
       <div className="row" style={{ justifyContent: 'space-between', marginBottom: 16 }}>
@@ -56,7 +56,7 @@ export function Inbox() {
       </div>
       <div className="table-wrap">
         <table>
-          <thead><tr><th>Ref</th><th>Client (synthetic)</th><th>Advice</th><th>Meeting</th><th>Adviser · paraplanner</th><th>Readiness</th></tr></thead>
+          <thead><tr><th className="c-opt">Ref</th><th>Client (synthetic)</th><th className="c-opt">Advice</th><th className="c-opt">Meeting</th><th className="c-opt">Adviser · paraplanner</th><th>Readiness</th></tr></thead>
           <tbody>{INBOX.map((i) => <Row key={i.ref} ref_={i.ref} />)}</tbody>
         </table>
       </div>

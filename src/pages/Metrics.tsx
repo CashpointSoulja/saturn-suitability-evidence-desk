@@ -6,7 +6,7 @@ export function Metrics() {
     <section className="page">
       <div className="page-head">
         <Eyebrow>Metrics and bets</Eyebrow>
-        <h1 className="display">What a Lead PM would own<br />for this feature.</h1>
+        <h1 className="display">What a Lead PM would own <br className="br-wide" />for this feature.</h1>
         <p className="lede">One north star, guardrails that stop speed coming at the cost of evidence, and input metrics that explain movement. Targets are hypotheses to test against a measured baseline, not results.</p>
       </div>
       <div className="table-wrap">
