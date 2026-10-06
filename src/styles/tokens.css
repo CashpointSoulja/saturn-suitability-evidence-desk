@@ -1,0 +1,12 @@
+:root {
+  --page: #FAFAFA; --surface: #FFFFFF; --ink: #000000; --ink-70: rgba(0,0,0,.7);
+  --ink-2: #666666; --ink-3: #888888; --line: #E1E1E1; --line-strong: #CFCFCF;
+  --btn-2: #F0F0F0; --primary: #0202D5; --primary-tint: #F2F2FD;
+  --pass: #1D7A46; --pass-tint: #F1F8F4;
+  --review: #A15C07; --review-tint: #FBF6EE;
+  --fail: #B42318; --fail-tint: #FCF3F2;
+  --radius: 4px;
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "Geist Sans", "Geist", system-ui, -apple-system, sans-serif;
+  --mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+}
